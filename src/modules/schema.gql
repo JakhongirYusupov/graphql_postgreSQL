@@ -1,0 +1,36 @@
+type Query {
+    user (key: Int): [Users!]!
+    search (key: String!): [Users!]!
+    active_user: [Users!]!
+    disactive_user: [Users!]!
+    selected: [Users!]!
+    disselected: [Users!]!
+    statistica: Status!
+}
+
+type Status {
+    all: Int!
+    actives: Int!
+    selecteds: Int!
+}
+
+type Mutation {
+    insert (full_name:String! user_name:String! new_password:String! confirm_password:String! email:String! bio:String!): Response!
+    update (user_id:Int! full_name:String! user_name:String! new_password:String! confirm_password:String!, email:String! bio:String!): Any
+    delete (user_id:Int!): Any
+}
+scalar Any
+
+type Response {
+    message: String!
+    data: Users!
+}
+
+type Users {
+    user_id: ID!
+    full_name: String!
+    user_name: String!
+    add_date: String!
+    active: Boolean!
+    selected: Boolean!
+}
